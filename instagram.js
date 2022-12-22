@@ -22,10 +22,6 @@ function verifyRequestSignature(req, res, buf) {
   }
 }
 
-function getUserToken() {
-
-}
-
 export default class InstagramAPI {
   client;
   port;
@@ -74,7 +70,6 @@ export default class InstagramAPI {
     this.client.post("/webhook", (req, res) => {
       let body = req.body;
       console.log("EVENT_RECEIVED");
-      console.log(JSON.stringify(body, null, 2));
 
       // Check if this is an event from a page subscription
       if (body.object === "instagram") {
@@ -82,8 +77,11 @@ export default class InstagramAPI {
         const clientId = content.sender.id;
         const text = content.message.text;
         const isEcho = content.message.is_echo;
-        if (this.callback && !isEcho) {
-          this.callback(clientId, text);
+        if (!isEcho) {
+          console.log(JSON.stringify(body, null, 2));
+          if (this.callback) {
+            this.callback(clientId, text);
+          }
         }
         // Returns a '200 OK' response to all requests
         res.status(200).send("EVENT_RECEIVED");
