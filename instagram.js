@@ -69,8 +69,9 @@ export default class InstagramAPI {
     // Create the endpoint for your webhook
     this.client.post("/webhook", (req, res) => {
       let body = req.body;
-      console.log("EVENT_RECEIVED", JSON.stringify(body));
-      
+      console.log("EVENT_RECEIVED");
+      console.log(JSON.stringify(body), null, 2);
+
       // Check if this is an event from a page subscription
       if (body.object === "instagram") {
         const content = body.entry[0].messaging[0];
@@ -111,6 +112,14 @@ export default class InstagramAPI {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          console.log(res);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 }
