@@ -69,7 +69,7 @@ export default class InstagramAPI {
     // Create the endpoint for your webhook
     this.client.post("/webhook", (req, res) => {
       let body = req.body;
-      console.log("EVENT_RECEIVED", body);
+      console.log("EVENT_RECEIVED", JSON.stringify(body));
       
       // Check if this is an event from a page subscription
       if (body.object === "instagram") {
