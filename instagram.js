@@ -21,12 +21,20 @@ class Instagram {
     this.ig = new IgApiClient();
   }
 
-  async login(username, password) {
+  async login(username, password, proxy = null) {
     this.ig.state.generateDevice(username);
-    await this.ig.simulate.preLoginFlow();
+    // await this.ig.simulate.preLoginFlow();
     const me = await this.ig.account.login(username, password);
     // process.nextTick(async () => await this.ig.simulate.postLoginFlow());
     return me;
+  }
+
+  async getState() {
+    return await this.ig.state.serialize();
+  }
+
+  async setState(state) {
+    return await this.ig.state.deserialize(state);
   }
 
   async getInbox() {

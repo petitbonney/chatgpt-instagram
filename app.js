@@ -7,7 +7,7 @@ const run = async () => {
   const ig = new Instagram();
   const me = await ig.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
 
-  const loop = setInterval(async () => {
+  const loop = async () => {
     await ig.approveAll();
     const inbox = await ig.getInbox();
     for (const thread of inbox) {
@@ -18,7 +18,9 @@ const run = async () => {
         await thread.broadcastText(msg.text);
       }
     }
-  }, 5000);
+  };
+
+  setInterval(loop, 5000);
 
   console.log("Running...");
 };
