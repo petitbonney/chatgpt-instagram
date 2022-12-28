@@ -20,11 +20,13 @@
   },
   "homepage": "https://github.com/petitbonney/brainmate#readme",
   "dependencies": {
-    "chatgpt": "^3.3.1",
+    "chatgpt": "^3.3.6",
     "dotenv": "^16.0.3",
     "instagram-private-api": "^1.45.3",
     "openai": "^3.1.0",
-    "re2": "^1.18.0"
+    "puppeteer": "^19.4.1",
+    "re2": "^1.18.0",
+    "readline-sync": "^1.4.10"
   },
   "engines": {
     "node": ">=18"
