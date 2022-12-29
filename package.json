@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "debug": "nodemon app.js",
-    "tunnel": "ngrok http --region us 3000"
+    "debug": "nodemon app.js"
   },
   "repository": {
     "type": "git",
