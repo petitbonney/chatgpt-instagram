@@ -29,14 +29,6 @@ class Instagram {
     return me;
   }
 
-  async getState() {
-    return await this.ig.state.serialize();
-  }
-
-  async setState(state) {
-    return await this.ig.state.deserialize(state);
-  }
-
   async getInbox() {
     const inbox = await this.ig.feed.directInbox();
     const records = await inbox.records();
@@ -54,10 +46,6 @@ class Instagram {
   async approveAll() {
     const pending = await this.getPending();
     return await this.ig.directThread.approveMultiple(pending.keys());
-  }
-
-  async getParticipantUsernames(thread) {
-    return thread.users.map((x) => x.username);
   }
 
   async getNotSeenMessages(thread, pk) {
