@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/petitbonney/brainmate#readme",
   "dependencies": {
-    "chatgpt": "^3.3.6",
+    "chatgpt": "^3.3.8",
     "dotenv": "^16.0.3",
     "instagram-private-api": "^1.45.3",
     "openai": "^3.1.0",
